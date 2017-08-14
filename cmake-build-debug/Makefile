@@ -123,32 +123,32 @@ COMP2006_Exam/fast:
 	$(MAKE) -f CMakeFiles/COMP2006_Exam.dir/build.make CMakeFiles/COMP2006_Exam.dir/build
 .PHONY : COMP2006_Exam/fast
 
-main.o: main.cpp.o
+COMP2006-Exam-Herr.o: COMP2006-Exam-Herr.cpp.o
 
-.PHONY : main.o
+.PHONY : COMP2006-Exam-Herr.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/COMP2006_Exam.dir/build.make CMakeFiles/COMP2006_Exam.dir/main.cpp.o
-.PHONY : main.cpp.o
+COMP2006-Exam-Herr.cpp.o:
+	$(MAKE) -f CMakeFiles/COMP2006_Exam.dir/build.make CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o
+.PHONY : COMP2006-Exam-Herr.cpp.o
 
-main.i: main.cpp.i
+COMP2006-Exam-Herr.i: COMP2006-Exam-Herr.cpp.i
 
-.PHONY : main.i
+.PHONY : COMP2006-Exam-Herr.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/COMP2006_Exam.dir/build.make CMakeFiles/COMP2006_Exam.dir/main.cpp.i
-.PHONY : main.cpp.i
+COMP2006-Exam-Herr.cpp.i:
+	$(MAKE) -f CMakeFiles/COMP2006_Exam.dir/build.make CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.i
+.PHONY : COMP2006-Exam-Herr.cpp.i
 
-main.s: main.cpp.s
+COMP2006-Exam-Herr.s: COMP2006-Exam-Herr.cpp.s
 
-.PHONY : main.s
+.PHONY : COMP2006-Exam-Herr.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/COMP2006_Exam.dir/build.make CMakeFiles/COMP2006_Exam.dir/main.cpp.s
-.PHONY : main.cpp.s
+COMP2006-Exam-Herr.cpp.s:
+	$(MAKE) -f CMakeFiles/COMP2006_Exam.dir/build.make CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.s
+.PHONY : COMP2006-Exam-Herr.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... COMP2006_Exam"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... COMP2006-Exam-Herr.o"
+	@echo "... COMP2006-Exam-Herr.i"
+	@echo "... COMP2006-Exam-Herr.s"
 .PHONY : help
 
 

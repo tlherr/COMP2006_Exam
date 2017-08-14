@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/COMP2006_Exam.dir/main.cpp.o"
+  "CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o"
   "COMP2006_Exam.pdb"
   "COMP2006_Exam"
 )

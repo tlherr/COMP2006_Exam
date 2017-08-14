@@ -57,38 +57,38 @@ include CMakeFiles/COMP2006_Exam.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/COMP2006_Exam.dir/flags.make
 
-CMakeFiles/COMP2006_Exam.dir/main.cpp.o: CMakeFiles/COMP2006_Exam.dir/flags.make
-CMakeFiles/COMP2006_Exam.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tom/CLionProjects/COMP2006_Exam/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/COMP2006_Exam.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/COMP2006_Exam.dir/main.cpp.o -c /Users/tom/CLionProjects/COMP2006_Exam/main.cpp
+CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o: CMakeFiles/COMP2006_Exam.dir/flags.make
+CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o: ../COMP2006-Exam-Herr.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tom/CLionProjects/COMP2006_Exam/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o -c /Users/tom/CLionProjects/COMP2006_Exam/COMP2006-Exam-Herr.cpp
 
-CMakeFiles/COMP2006_Exam.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/COMP2006_Exam.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/tom/CLionProjects/COMP2006_Exam/main.cpp > CMakeFiles/COMP2006_Exam.dir/main.cpp.i
+CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/tom/CLionProjects/COMP2006_Exam/COMP2006-Exam-Herr.cpp > CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.i
 
-CMakeFiles/COMP2006_Exam.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/COMP2006_Exam.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/tom/CLionProjects/COMP2006_Exam/main.cpp -o CMakeFiles/COMP2006_Exam.dir/main.cpp.s
+CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/tom/CLionProjects/COMP2006_Exam/COMP2006-Exam-Herr.cpp -o CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.s
 
-CMakeFiles/COMP2006_Exam.dir/main.cpp.o.requires:
+CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o.requires:
 
-.PHONY : CMakeFiles/COMP2006_Exam.dir/main.cpp.o.requires
+.PHONY : CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o.requires
 
-CMakeFiles/COMP2006_Exam.dir/main.cpp.o.provides: CMakeFiles/COMP2006_Exam.dir/main.cpp.o.requires
-	$(MAKE) -f CMakeFiles/COMP2006_Exam.dir/build.make CMakeFiles/COMP2006_Exam.dir/main.cpp.o.provides.build
-.PHONY : CMakeFiles/COMP2006_Exam.dir/main.cpp.o.provides
+CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o.provides: CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o.requires
+	$(MAKE) -f CMakeFiles/COMP2006_Exam.dir/build.make CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o.provides.build
+.PHONY : CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o.provides
 
-CMakeFiles/COMP2006_Exam.dir/main.cpp.o.provides.build: CMakeFiles/COMP2006_Exam.dir/main.cpp.o
+CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o.provides.build: CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o
 
 
 # Object files for target COMP2006_Exam
 COMP2006_Exam_OBJECTS = \
-"CMakeFiles/COMP2006_Exam.dir/main.cpp.o"
+"CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o"
 
 # External object files for target COMP2006_Exam
 COMP2006_Exam_EXTERNAL_OBJECTS =
 
-COMP2006_Exam: CMakeFiles/COMP2006_Exam.dir/main.cpp.o
+COMP2006_Exam: CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o
 COMP2006_Exam: CMakeFiles/COMP2006_Exam.dir/build.make
 COMP2006_Exam: CMakeFiles/COMP2006_Exam.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/tom/CLionProjects/COMP2006_Exam/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable COMP2006_Exam"
@@ -99,7 +99,7 @@ CMakeFiles/COMP2006_Exam.dir/build: COMP2006_Exam
 
 .PHONY : CMakeFiles/COMP2006_Exam.dir/build
 
-CMakeFiles/COMP2006_Exam.dir/requires: CMakeFiles/COMP2006_Exam.dir/main.cpp.o.requires
+CMakeFiles/COMP2006_Exam.dir/requires: CMakeFiles/COMP2006_Exam.dir/COMP2006-Exam-Herr.cpp.o.requires
 
 .PHONY : CMakeFiles/COMP2006_Exam.dir/requires
 

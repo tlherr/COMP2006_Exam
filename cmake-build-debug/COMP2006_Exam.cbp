@@ -80,7 +80,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/tom/CLionProjects/COMP2006_Exam/main.cpp">
+		<Unit filename="/Users/tom/CLionProjects/COMP2006_Exam/COMP2006-Exam-Herr.cpp">
 			<Option target="COMP2006_Exam"/>
 		</Unit>
 		<Unit filename="/Users/tom/CLionProjects/COMP2006_Exam/CMakeLists.txt">
