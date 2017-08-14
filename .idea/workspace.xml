@@ -39,10 +39,10 @@
       <file leaf-file-name="COMP2006-Exam-Herr.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/COMP2006-Exam-Herr.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="409">
+              <caret line="557" column="5" lean-forward="false" selection-start-line="557" selection-start-column="5" selection-end-line="557" selection-end-column="5" />
               <folding>
-                <element signature="e#101#120#0" expanded="true" />
+                <element signature="e#189#208#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -323,7 +323,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1502740897539</updated>
-      <workItem from="1502740899376" duration="8698000" />
+      <workItem from="1502740899376" duration="9853000" />
     </task>
     <task id="LOCAL-00001" summary="First 4 points complete">
       <created>1502742750575</created>
@@ -346,11 +346,18 @@
       <option name="project" value="LOCAL" />
       <updated>1502748320184</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Saving progress">
+      <created>1502749761690</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1502749761690</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8698000" />
+    <option name="totallyTimeSpent" value="9853000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="412" y="23" width="1028" height="873" extended-state="0" />
@@ -387,7 +394,8 @@
     <MESSAGE value="First 4 points complete" />
     <MESSAGE value="Built out some new classes and generic input functions" />
     <MESSAGE value="Can create rooms and display in requested units" />
-    <option name="LAST_COMMIT_MESSAGE" value="Can create rooms and display in requested units" />
+    <MESSAGE value="Saving progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="Saving progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -406,10 +414,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/COMP2006-Exam-Herr.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="409">
+          <caret line="557" column="5" lean-forward="false" selection-start-line="557" selection-start-column="5" selection-end-line="557" selection-end-column="5" />
           <folding>
-            <element signature="e#101#120#0" expanded="true" />
+            <element signature="e#189#208#0" expanded="true" />
           </folding>
         </state>
       </provider>

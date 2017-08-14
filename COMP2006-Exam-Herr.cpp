@@ -3,12 +3,15 @@
  * Student Number: 200325519
  * OS: OSX 10.11.6
  * IDE: CLion 2017.1.1
+ *
+ * I really hate timed programming exams, just encourages bad/hardcoded garbage code
  */
 
 #include <iostream>
 #include <map>
 #include <vector>
 #include <iomanip>
+#include <cmath>
 
 
 using namespace std;
@@ -28,6 +31,14 @@ double metersToFeet(double meters) {
 
 double feetToMeters(double feet) {
     return (feet * 0.3048);
+}
+
+double gallonsPerSqMeter(double sqm) {
+    return sqm/37.162;
+}
+
+double gallonsPerSqFoot(double sqft) {
+    return sqft/400;
 }
 
 
@@ -433,6 +444,7 @@ int getInput() {
 void printSummaries() {
     map<int, double> colourSum;
     int roomCounter = 0;
+    int cost = 0;
     //Loop through each account
     for(auto account : accounts) {
         cout << "Room Summary" << endl;
@@ -445,11 +457,9 @@ void printSummaries() {
             //Check if the colour sum map has our colour defined
             if(colourSum.count(room.getColour())) {
                 double &clrptr = colourSum.at(room.getColour());
-                cout << "Adding: " << room.getAreaInCurrent(getActiveDisplayUnit()) << endl;
                 clrptr+=room.getAreaInCurrent(getActiveDisplayUnit());
             } else {
                 //colour does not exist, insert it
-                cout << "Inserting: " << room.getAreaInCurrent(getActiveDisplayUnit()) << endl;
                 colourSum.insert(
                         pair<int, double>(room.getColour(), room.getAreaInCurrent(getActiveDisplayUnit())));
             }
@@ -459,12 +469,22 @@ void printSummaries() {
 
         //Print out the colour summary after all room info has been displayed
         for(auto const &ent1 : colourSum) {
-            // ent1.first is the first key
-            cout << "Colour " << ent1.first << ":" << ent1.second << endl;
+            cout << "Colour: " << ent1.first << " Area: " << ent1.second << " Gallons Required: ";
+
+            double gallonsNeeded = 0.0;
+            if(getActiveDisplayUnit()==ft) {
+                gallonsNeeded = gallonsPerSqFoot(ent1.second);
+            } else if(getActiveDisplayUnit()==m) {
+                gallonsNeeded = gallonsPerSqMeter(ent1.second);
+            }
+
+            cout << gallonsNeeded << " Price: " << ceil(gallonsNeeded) * 36.97;
+            cost+= ceil(gallonsNeeded) * 36.97;
+            cout << endl;
         }
     }
-
-
+    cout << "Cost (pre tax): " << cost << endl;
+    cout << "Cost (after HST): " << cost+(cost*0.13) << endl;
 }
 
 
@@ -536,12 +556,4 @@ int main() {
             default:break;
         }
     }
-
-
-
-
-
-
-
-    return 0;
 }
