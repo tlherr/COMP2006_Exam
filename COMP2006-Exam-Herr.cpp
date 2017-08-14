@@ -18,38 +18,48 @@ class account;
 int idCounter = 1;
 //Using dynamic memory (your choice) to expand the number of rooms/accounts (4 marks)
 vector<account> accounts;
-map<int, room> rooms;
+enum displayUnits { ft, m };
+displayUnits activeUnit;
+
+double metersToFeet(double meters) {
+    return (meters * 3.28084);
+}
+
+double feetToMeters(double feet) {
+    return (feet * 0.3048);
+}
 
 //Create a strut/class (or similar mechanism of your choice) for the room fn (case 2)      (2 marks)
 class room {
     private:
-        int length;
-        int width;
-        int height;
+        double length;
+        double width;
+        double height;
         int colour;
+        displayUnits unitType;
 
     public:
-        int getLength() const {
+        double getLength() const {
             return length;
         }
 
-        void setLength(int length) {
+        void setLength(double length) {
             room::length = length;
         }
 
-        int getWidth() const {
+        double getWidth() const {
             return width;
         }
 
-        void setWidth(int width) {
+        void setWidth(double width) {
             room::width = width;
         }
 
-        int getHeight() const {
+        double getHeight() const {
             return height;
         }
 
-        void setHeight(int height) {
+        void setHeight(double height) {
             room::height = height;
         }
 
@@ -60,6 +70,64 @@ class room {
         void setColour(int colour) {
             room::colour = colour;
         }
+
+    displayUnits getUnitType() const {
+        return unitType;
+    }
+
+    void setUnitType(displayUnits unitType) {
+        room::unitType = unitType;
+    }
+    /**
+     * L*H + L*H + W*H + W*H
+     * @return
+     */
+    double getArea() {
+        return (this->getLength() * this->getHeight()) + (this->getLength() * this->getHeight())
+                + (this->getWidth() * this->getHeight()) + (this->getWidth() * this->getHeight());
+    }
+
+    void display(displayUnits current) {
+        cout << "  Dimensions LxWxH";
+
+        if(current==this->getUnitType()) {
+            //No conversion is required
+            if(current==ft) {
+                cout << " (ft): ";
+            } else if(current==m) {
+                cout << " (m): ";
+            }
+
+            cout << this->getLength() << " x " << this->getWidth()
+                    << " x " << this->getHeight() << endl;
+
+            if(current==ft) {
+                cout << "Area (ft2): ";
+            } else if(current==m) {
+                cout << "Area (m2): ";
+            }
+
+            cout << this->getArea() << endl;
+        } else {
+            //Current units are different than what we have stored, conversion is required
+
+            if(current==ft && this->getUnitType()==m) {
+                cout << " (m): " << feetToMeters(this->getLength()) << " x " << feetToMeters(this->getWidth())
+                        << " x " << feetToMeters(this->getHeight()) << endl;
+
+                cout << "Area (m2):" << feetToMeters(this->getArea()) << endl;
+            }
+
+            if(current==m && this->getUnitType()==ft) {
+                cout << " (ft): " << metersToFeet(this->getLength()) << " x " << metersToFeet(this->getWidth())
+                     << " x " << metersToFeet(this->getHeight()) << endl;
+
+                cout << "Area (ft2):" << metersToFeet(this->getArea()) << endl;
+            }
+        }
+
+        cout << "Colour: " << this->getColour();
+    }
 };
 
 //-	Create a class for Account Info that contains the data in the example (case 1) (1 mark)
@@ -69,41 +137,72 @@ class account {
         string name;
         string address;
         string phone;
+        vector<room> rooms;
 
     public:
         account() {
             id = idCounter;
-            idCounter++;
         }
 
-    int getId() const {
-        return id;
-    }
+        account(int id) : id(id) {}
 
-    const string &getName() const {
-        return name;
-    }
+        friend bool operator== (account &a1, account &a2) {
+            return (a1.id == a2.id);
+        };
 
-    void setName(const string &name) {
-        account::name = name;
-    }
+        friend bool operator!= (account &a1, account &a2) {
+            return !(a1 == a2);
+        };
 
-    const string &getAddress() const {
-        return address;
-    }
+        int getId() const {
+            return id;
+        }
 
-    void setAddress(const string &address) {
-        account::address = address;
-    }
+        const string &getName() const {
+            return name;
+        }
 
-    const string &getPhone() const {
-        return phone;
-    }
+        void setName(const string &name) {
+            account::name = name;
+        }
 
-    void setPhone(const string &phone) {
-        account::phone = phone;
-    }
+        const string &getAddress() const {
+            return address;
+        }
+
+        void setAddress(const string &address) {
+            account::address = address;
+        }
+
+        const string &getPhone() const {
+            return phone;
+        }
+
+        void setPhone(const string &phone) {
+            account::phone = phone;
+        }
+
+        const vector<room> &getRooms() const {
+            return rooms;
+        }
+
+        void addRoom(room toAdd) {
+            account::rooms.push_back(toAdd);
+        }
 };
+
+/**
+ * The functionality to change between metric/imperial (case 3) (4 marks)
+ * @param unit
+ */
+void setActiveDisplayUnit(displayUnits unit) {
+    activeUnit = unit;
+}
+
+displayUnits getActiveDisplayUnit() {
+    return activeUnit;
+}
+
 /**
  * Generic function that gets a string from the user, checks to make sure it is not empty and a valid string
  * @return string
@@ -129,6 +228,30 @@ string getUserInputString() {
     return inputString;
 }
 /**
+ * Generic function to get a double from user input
+ * @return double
+ */
+double getUserInputDouble() {
+    bool isValid = false;
+    double inputDbl;
+
+    while(!isValid) {
+        cin >> inputDbl;
+
+        if(inputDbl>0 && cin.good()) {
+            isValid = true;
+        } else {
+            cout << "Invalid Input, please try again" << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }
+
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    return inputDbl;
+}
+/**
  * Generic function to get an integer input from the user
  * @return int
  */
@@ -152,6 +275,42 @@ int getUserInputInt() {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     return inputInt;
 }
+/**
+ * Get an account number from the user, the id must exist for it to be valid
+ * @return int id number provided
+ */
+int getUserInputAccountNumber() {
+    bool isValid = false;
+    bool isMatch = false;
+    int inputInt;
+
+    while(!isValid) {
+        cin >> inputInt;
+
+        if(cin.good()) {
+            for(int i=0; i<accounts.size(); i++) {
+                if(accounts.at((unsigned long) i).getId() == inputInt) {
+                    isValid = true;
+                    isMatch = true;
+                }
+            }
+
+            if(!isMatch) {
+                cout << "No account with that id was found, please try again" << endl;
+            }
+
+        } else {
+            cout << "Invalid Input, please try again" << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }
+
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    return inputInt;
+}
+
 
 /**
  * Creates a new account object and populates fields with user input
@@ -170,6 +329,8 @@ account createNewAccount() {
     cout << "Phone: ";
     newAccount.setPhone(getUserInputString());
 
+    idCounter++;
+
     return newAccount;
 }
 
@@ -180,6 +341,35 @@ account createNewAccount() {
 room createNewRoom() {
     room newRoom = room();
 
+    newRoom.setUnitType(getActiveDisplayUnit());
+
+    if(activeUnit==ft) {
+        cout << "Length (ft):";
+        newRoom.setLength(getUserInputDouble());
+
+        cout << "Width (ft):";
+        newRoom.setWidth(getUserInputDouble());
+
+        cout << "Height (ft):";
+        newRoom.setHeight(getUserInputDouble());
+    }
+
+
+    if(activeUnit==m) {
+        cout << "Length (m):";
+        newRoom.setLength(getUserInputDouble());
+
+        cout << "Width (m):";
+        newRoom.setWidth(getUserInputDouble());
+
+        cout << "Height (m):";
+        newRoom.setHeight(getUserInputDouble());
+    }
+
+    cout << "Colour:";
+    newRoom.setColour(getUserInputInt());
+
+    return newRoom;
 }
 
 /**
@@ -190,7 +380,17 @@ int getInput() {
     cout << "Your Options" << endl;
     cout << "1. Add an Account" << endl;
     cout << "2. Add a Room" << endl;
-    cout << "3. Switch to Metric" << endl;
+
+    switch(getActiveDisplayUnit()) {
+        case ft:
+            cout << "3. Switch to Metric" << endl;
+            break;
+
+        case m:
+            cout << "3. Switch to Imperial" << endl;
+            break;
+    }
+
     cout << "4. Print Account Summary" << endl;
     cout << "5. Exit" << endl;
 
@@ -212,7 +412,29 @@ int getInput() {
     return 0;
 }
 
+void printSummaries() {
+    int roomCounter = 0;
+    //Loop through each account
+    for(auto account : accounts) {
+        cout << "Room Summary" << endl;
+        //Check if the account has any rooms
+        for(auto room : account.getRooms()) {
+            cout << "Room " << roomCounter << ":" << endl;
+            room.display(getActiveDisplayUnit());
+            roomCounter++;
+        }
+    }
+
+}
+
+
+
+
+
 int main() {
+    //Starting in ft
+    activeUnit = ft;
+
     //Hardcode your first name, last name, and student number into 3 strings. (1 Mark)
     string firstName = "Thomas";
     string lastName = "Herr";
@@ -238,12 +460,31 @@ int main() {
                 break;
             case 2:
                 //Add a Room
+                if(accounts.size()>0) {
+                    cout << "Account Number:";
+                    int accountNum = getUserInputAccountNumber();
+                    accounts.at((unsigned long) accountNum-1).addRoom(createNewRoom());
+                } else {
+                    cout << "Please create an account before adding a room" << endl;
+                }
                 break;
             case 3:
-                //Switch to Metric
+                //Switch Active Units
+                switch(getActiveDisplayUnit()) {
+                    case ft:
+                            setActiveDisplayUnit(m);
+                            cout << "You are now working in Metric." << endl;
+                        break;
+
+                    case m:
+                            setActiveDisplayUnit(ft);
+                            cout << "You are now working in Imperial" << endl;
+                        break;
+                }
                 break;
             case 4:
                 //Print Account Summary
+                printSummaries();
                 break;
             case 5:
                 //Exit
