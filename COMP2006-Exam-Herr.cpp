@@ -8,6 +8,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <iomanip>
 
 
 using namespace std;
@@ -28,6 +29,7 @@ double metersToFeet(double meters) {
 double feetToMeters(double feet) {
     return (feet * 0.3048);
 }
+
 
 //Create a strut/class (or similar mechanism of your choice) for the room fn (case 2)      (2 marks)
 class room {
@@ -87,7 +89,23 @@ class room {
                 + (this->getWidth() * this->getHeight()) + (this->getWidth() * this->getHeight());
     }
 
+    double getAreaInCurrent(displayUnits current) {
+        if(current==this->getUnitType()) {
+            //No conversion required
+            return this->getArea();
+        } else {
+            if(current==ft && this->getUnitType()==m) {
+                return feetToMeters(this->getArea());
+            }
+
+            if(current==m && this->getUnitType()==ft) {
+                return metersToFeet(this->getArea());
+            }
+        }
+    }
+
     void display(displayUnits current) {
+        cout << "Working with current units: " << current << endl;
         cout << "  Dimensions LxWxH";
 
         if(current==this->getUnitType()) {
@@ -413,6 +431,7 @@ int getInput() {
 }
 
 void printSummaries() {
+    map<int, double> colourSum;
     int roomCounter = 0;
     //Loop through each account
     for(auto account : accounts) {
@@ -422,8 +441,29 @@ void printSummaries() {
             cout << "Room " << roomCounter << ":" << endl;
             room.display(getActiveDisplayUnit());
             roomCounter++;
+
+            //Check if the colour sum map has our colour defined
+            if(colourSum.count(room.getColour())) {
+                double &clrptr = colourSum.at(room.getColour());
+                cout << "Adding: " << room.getAreaInCurrent(getActiveDisplayUnit()) << endl;
+                clrptr+=room.getAreaInCurrent(getActiveDisplayUnit());
+            } else {
+                //colour does not exist, insert it
+                cout << "Inserting: " << room.getAreaInCurrent(getActiveDisplayUnit()) << endl;
+                colourSum.insert(
+                        pair<int, double>(room.getColour(), room.getAreaInCurrent(getActiveDisplayUnit())));
+            }
+        }
+
+        cout << "***********************************" << endl;
+
+        //Print out the colour summary after all room info has been displayed
+        for(auto const &ent1 : colourSum) {
+            // ent1.first is the first key
+            cout << "Colour " << ent1.first << ":" << ent1.second << endl;
         }
     }
+
 
 }
 
@@ -432,6 +472,9 @@ void printSummaries() {
 
 
 int main() {
+    //Limit the displayed values to 4 decimals (1 mark)
+    setprecision(4);
+
     //Starting in ft
     activeUnit = ft;
 
@@ -487,7 +530,8 @@ int main() {
                 printSummaries();
                 break;
             case 5:
-                //Exit
+                //The ability to exit the application (case 5) (1 mark)
+                cout << "Thank you for using Paint Pro!" << endl;
                 exit(0);
             default:break;
         }
